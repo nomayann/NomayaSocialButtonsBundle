@@ -1,0 +1,22 @@
+{% if url is not defined or url == null %}
+    {% set url = app.request.uri %}
+{% endif %}
+
+{% spaceless %}
+ <a href="https://twitter.com/share" class="twitter-share-button"
+
+   data-text="{{message}}" 
+   data-url="{{url}}"
+   data-lang="{{locale}}"
+
+   {% if via is not sameas(false) %}
+     data-via="{{via}}"
+   {% endif %}
+
+   {% if tag is not sameas(false) %}
+     data-hashtags="{{tag}}"
+   {% endif %}
+ >{{text}}</a>
+
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{% endspaceless %}

@@ -1,0 +1,12 @@
+services:
+    nomaya.socialBarHelper:
+        class : Nomaya\Bundle\SocialBundle\Helpers\SocialBarHelper
+        tags : 
+            - {name : 'templating.helper', alias : 'social-buttons'}
+        arguments : [ @templating ]
+
+    twig.extension.acme_social_bar:
+        class: Nomaya\Bundle\SocialBundle\Twig\Extension\NomayaTwigSocialBar
+        tags:
+            - { name: 'twig.extension' }
+        arguments : [ @service_container ]

@@ -1,0 +1,18 @@
+{% if url is not defined or url == null %}
+    {% set url = app.request.uri %}
+{% endif %}
+
+{% spaceless %}
+ <div class="g-plusone" data-size="{{size}}" data-annotation="{{annotation}}" data-width="{{width}}" data-href="{{url}}"></div>
+
+ <script type="text/javascript">
+   window.___gcfg = {lang: '{{locale}}'};
+
+   (function() {
+     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+     po.src = 'https://apis.google.com/js/plusone.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+   })();
+ </script>
+
+{% endspaceless %}

@@ -1,0 +1,23 @@
+parameters:
+    twig:
+        globals:
+            facebook:
+                url: 		null
+                locale: 	fr_FR
+                send: 		false
+                width:		300
+                showFaces: 	false
+                layout: 	button_count
+            twitter:
+                url:		null
+                locale:		fr
+                message:	Je veux partager ça avec vous
+                text:		Tweet
+                via:		L'Equipe cartedevisitevirtuelle.fr
+                tag:		ttot
+            google_plus:
+                url: 		null
+                locale : 	fr
+                size : 		medium
+                annotation : bubble
+                width : 	300
