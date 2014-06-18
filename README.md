@@ -151,5 +151,6 @@ Thanks to Gregquat for his article: http://obtao.com/blog/2012/11/social-buttons
 
 ## License
 
-This bundle is under the MIT license. For the full copyright and license information, please view the LICENSE file that
-was distributed with this source code.
+This bundle is under the MIT license. See the complete license in the bundle:
+
+    Resources/meta/LICENSE
