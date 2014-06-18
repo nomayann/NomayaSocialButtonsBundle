@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 namespace Nomaya\SocialBundle\Twig\Extension;
 
-class NomayaTwigSocialBar extends \Twig_Extension{
+class NomayaTwigSocialLinks extends \Twig_Extension{
 
     protected $container;
 
@@ -39,22 +39,18 @@ class NomayaTwigSocialBar extends \Twig_Extension{
     
     public function getName()
     {
-        return 'nomaya_social_bar';
+        return 'nomaya_social_links';
     }
     
     public function getFunctions()
     {
       return array(
-        'socialButtons'     => new \Twig_Function_Method($this, 'getSocialButtons' ,array('is_safe' => array('html'))),
-        'facebookButton'    => new \Twig_Function_Method($this, 'getFacebookLikeButton' ,array('is_safe' => array('html'))),
-        'twitterButton'     => new \Twig_Function_Method($this, 'getTwitterButton' ,array('is_safe' => array('html'))),
-        'googleplusButton'  => new \Twig_Function_Method($this, 'getGoogleplusButton' ,array('is_safe' => array('html'))),
-        'linkedinButton'    => new \Twig_Function_Method($this, 'getLinkedinButton' ,array('is_safe' => array('html'))),
-        'pinterestButton'   => new \Twig_Function_Method($this, 'getPinterestButton' ,array('is_safe' => array('html'))),
+        'socialLinks'     => new \Twig_Function_Method($this, 'getSocialLinks' ,array('is_safe' => array('html'))),
+        'socialLink'     => new \Twig_Function_Method($this, 'getSocialLink' ,array('is_safe' => array('html')))
       );
     }
 
-    public function getSocialButtons($parameters = array())
+    public function getSocialLinks($parameters = array())
     {
       $networks = array('facebook', 'twitter', 'googleplus', 'linkedin', 'tumblr', 'pinterest', 'youtube', 'instagram');
       foreach ($networks as $network)
@@ -72,41 +68,19 @@ class NomayaTwigSocialBar extends \Twig_Extension{
       }
 
       // get the helper service and display the template
-      return $this->container->get('nomaya.socialBarHelper')->socialButtons($render_parameters);
+      return $this->container->get('nomaya.socialLinksHelper')->socialLinks($render_parameters);
     }
- 
+
     // https://developers.facebook.com/docs/reference/plugins/like/ 
-    public function getFacebookLikeButton($parameters = array())
+    public function getSocialLink($network, $parameters = array())
     {
        // default values, you can override the values by setting them
-       return $this->getButton('facebook',$parameters);
-    }
+       $otherParameters = $this->container->hasParameter('links.'.$network) ? $this->container->getParameter('links.'.$network) : array();
+       $parameters = $parameters + $otherParameters;
 
-    public function getTwitterButton($parameters = array())
-    {
-       return $this->getButton('twitter',$parameters);
-    }
+       if (!array_key_exists('network', $parameters)) { $parameters = $parameters + array('network' => $network); }
+       if (!array_key_exists('theme', $parameters)) { $parameters = $parameters + array('theme' => $this->container->getParameter('social.theme')); }
 
-    public function getGoogleplusButton($parameters = array())
-    {
-       return $this->getButton('googleplus',$parameters);
-       
+       return !empty($parameters) && array_key_exists('url', $parameters) ? $this->container->get('nomaya.socialLinksHelper')->socialLink($parameters): false;
     }
-    public function getLinkedinButton($parameters = array())
-    {
-       return $this->getButton('linkedin',$parameters);
-    }
-
-    public function getPinterestButton($parameters = array())
-    {
-       return $this->getButton('pinterest',$parameters);
-    }
-
-    private function getButton($network, $parameters = array())
-    {
-       $parameters = $parameters + $this->container->getParameter('buttons.'.$network);
-       $Button=$network.'Button';
-       return $this->container->get('nomaya.socialBarHelper')->$Button($parameters);
-    }
-
 }

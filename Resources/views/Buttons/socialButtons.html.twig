@@ -1,0 +1,29 @@
+{% if facebook is not sameas(false) %}
+    <span class="button facebookButton col-xs-2 col-xs-offset-1">
+      {{ facebookButton(facebook) }}
+    </span>
+{% endif %}
+
+{% if googleplus is not sameas(false) %}
+    <span class="button googleplus col-xs-2">
+      {{ googleplusButton(googleplus) }}
+    </span>
+{% endif %}
+
+{% if twitter is not sameas(false) %}
+    <span class="button twitterButton col-xs-2">
+      {{ twitterButton(twitter) }}
+    </span>
+{% endif %}
+
+{% if linkedin is not sameas(false) %}
+    <span class="button linkedinButton col-xs-2">
+      {{ linkedinButton(linkedin) }}
+    </span>
+{% endif %}
+
+{% if pinterest is not sameas(false) %}
+    <span class="button linkedinButton col-xs-2">
+      {{ pinterestButton(pinterest) }}
+    </span>
+{% endif %}

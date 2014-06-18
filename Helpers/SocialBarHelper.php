@@ -1,6 +1,6 @@
 <?php
 
-namespace Nomaya\Bundle\SocialBundle\Helpers;
+namespace Nomaya\SocialBundle\Helpers;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\EngineInterface;
@@ -17,31 +17,42 @@ class SocialBarHelper extends Helper
 
     public function socialButtons($parameters)
     {
-      return $this->templating->render('NomayaSocialBundle:Social:socialButtons.html.twig', $parameters);
+      return $this->templating->render('NomayaSocialBundle:Buttons:socialButtons.html.twig', $parameters);
+    }
+
+    private function socialButton($network, $parameters)
+    {
+      return $this->templating->render('NomayaSocialBundle:Buttons:'.$network.'Button.html.twig', $parameters);
     }
 
     public function facebookButton($parameters)
     {
-      return $this->templating->render('NomayaSocialBundle:Social:facebookButton.html.twig', $parameters);
+      return $this->socialButton('facebook',$parameters);
     }
 
     public function twitterButton($parameters)
     {
-      return $this->templating->render('NomayaSocialBundle:Social:twitterButton.html.twig', $parameters);
+      return $this->socialButton('twitter',$parameters);
     }
 
     public function googlePlusButton($parameters)
     {
-      return $this->templating->render('NomayaSocialBundle:Social:googlePlusButton.html.twig', $parameters);
+     return $this->socialButton('googleplus',$parameters);
     }
 
     public function linkedinButton($parameters)
     {
-      return $this->templating->render('NomayaSocialBundle:Social:linkedinButton.html.twig', $parameters);
+      return $this->socialButton('linkedin',$parameters);
+    }
+
+    public function pinterestButton($parameters)
+    {
+      return $this->socialButton('pinterest',$parameters);
     }
 
     public function getName()
     {
         return 'socialButtons';
     }
+
 }

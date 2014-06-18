@@ -22,7 +22,7 @@ THE SOFTWARE.
 */
 
 
-namespace Nomaya\Bundle\SocialBundle;
+namespace Nomaya\SocialBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -22,7 +22,7 @@ THE SOFTWARE.
 */
 
 
-namespace Nomaya\Bundle\SocialBundle\DependencyInjection;
+namespace Nomaya\SocialBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -51,7 +51,14 @@ class NomayaSocialExtension extends Extension
         {
             $container->setParameter('buttons.'.$network , $value);
         }
-
+        foreach($config['links'] as $network => $value )
+        {
+            $container->setParameter('links.'.$network , array(
+                                                        'network'   => $network, 
+                                                        'url'       => $value,
+                                                        'theme'     => $config['theme']));
+        }
+        $container->setParameter('social.theme', $config['theme']);
     }
 
     public function getAlias()

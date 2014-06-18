@@ -1,0 +1,37 @@
+  
+{% if facebook is not sameas(false) %}
+    <span class="link facebookLink">
+      {{ socialLink('facebook',facebook) }}
+    </span>
+{% endif %}
+
+{% if googleplus is not sameas(false) %}
+    <span class="link googleplusLink">
+      {{ socialLink('googleplus',googleplus) }}
+    </span>
+{% endif %}
+
+{% if twitter is not sameas(false) %}
+    <span class="link twitterLink">
+      {{ socialLink('twitter',twitter) }}
+    </span>
+{% endif %}
+
+{% if linkedin is not sameas(false) %}
+    <span class="link linkedinLink">
+      {{ socialLink('linkedin',linkedin) }}
+    </span>
+{% endif %}
+
+{% if tumblr is not sameas(false) %}
+    <span class="link tumblrLink">
+      {{ socialLink('tumblr',linkedin) }}
+    </span>
+{% endif %}
+
+{% if pinterest is not sameas(false) %}
+    <span class="link pinterestLink">
+      {{ socialLink('pinterest',linkedin) }}
+    </span>
+{% endif %}
+

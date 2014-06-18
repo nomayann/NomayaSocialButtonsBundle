@@ -3,8 +3,9 @@
     "type" : "symfony-bundle",
     "description" : "A bundle to easily add facebook, twitter, G+, Linkedin buttons to your templates",
     "authors" : [{
-        "name" : "Yann Chauvel",
-        "email" : "yann@nomaya.net"
+        "name" :    "Yann Chauvel",
+        "email" :   "yann@nomaya.net",
+        "homepage": "http://www.nomaya.net/"
     }],
     "keywords" : [
         "symfony", "symfony2", "symfony2bundle", "bundle", 
@@ -19,15 +20,15 @@
         "twig/twig": "*"
     },
     "require-dev" : {
-        "matthiasnoback/symfony-config-test": "0.*",
-        "symfony/framework-bundle": ">=2.1"
+        "matthiasnoback/symfony-config-test":   "0.*",
+        "symfony/framework-bundle":             ">=2.1"
     },
     "autoload" : {
         "psr-0" : {
-            "Nomaya\\Bundle\\SocialBundle\\" : ""
+            "Nomaya\\SocialBundle\\":   ""
         }
     },
-    "target-dir" : "Nomaya/Bundle/SocialBundle",
+    "target-dir" : "Nomaya/SocialBundle",
     "extra" : {
     "branch-alias" : {
             "dev-master" : "1.0-dev"

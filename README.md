@@ -2,12 +2,12 @@ NomayaSocialButtonsBundle
 =========================
 
 This bundle provides a simple way to integrate a bar of social buttons to share your pages on Facebook, Twitter, Google Plus and Linkdein.
+You also have a social links bar to networks.
 
 ## Introduction
 
 I have not found any Symfony2 bundle to respond to this common need: display "share", "like"... buttons with an easy integration into templates.
 It is intended to evolve :
-- display links to network pages
 - manage more networks 
 - use custom icons
 - compatibility with php templates
@@ -21,12 +21,13 @@ Yann
 
 ## Installation
 
-### Add in your composer.json
+### Add this line to require section of your composer.json
 
 ``` js
 {
     //...
     "require": {
+        //...
         "nomaya/social-bundle": "dev-master"
     }
 }
@@ -36,7 +37,7 @@ Yann
 
 ``` bash
 $ curl -s http://getcomposer.org/installer | php
-$ php composer.phar update nomaya/socialbundle
+$ php composer.phar update nomaya/social-bundle
 ```
 
 Composer will install the bundle to your project's `vendor/nomaya` directory.
@@ -51,7 +52,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Nomaya\Bundle\SocialBundle\NomayaSocialBundle(),
+        new Nomaya\SocialBundle\NomayaSocialBundle(),
     );
 }
 ```
@@ -78,9 +79,9 @@ nomaya_social:
             locale:         "fr"
             message:        "Je veux partager ça avec vous"
             text:           "Tweet"
-            via:            "L'Equipe du site"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
             tag:            "ttot"
-        google_plus:
+        googleplus:
             url:            null
             locale :        "fr"
             size :          "medium"
@@ -90,6 +91,12 @@ nomaya_social:
             url:            null
             locale:         "fr_FR"
             counter:        "right"
+        pinterest:
+            url:            null
+    links: 
+        facebook:           "http://www.facebook.com/yann.chauvel"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional
 ```
 
 Get the options details : 
@@ -97,6 +104,7 @@ Get the options details :
 - https://developers.google.com/+/web/+1button/
 - https://about.twitter.com/resources/buttons
 - https://developer.linkedin.com/plugins/share-plugin-generator
+- ...
 
 
 
@@ -105,19 +113,35 @@ Get the options details :
 The bundle provides a Twig extension for quickly generating the buttons.
 
 ``` twig
-"// Insert the whole bar"
+// buttons
+
+// Insert the whole bar
 "{{ socialButtons() }}"
 
-"// Insert only one button"
+// Insert only one button
 "{{ twitterButton() }}"
-"// or"
+// or
 "{{ socialButtons( {'googleplus':false, 'facebook':false, 'linkedin':false} ) }}"
 
-"// insert the google+ button with custom parameters"
+// insert the google+ button with custom parameters
 "{{ googlePlusButton( {'locale':'fr', 'url':'http://google.fr' }) }}"
 
-"// insert the bar with specific values for Facebook"
+// insert the bar with specific values for Facebook
 "{{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}"
+
+// links
+
+// insert the whole links defined in config
+"{{ sociallinks() }}"
+
+// insert one link, no option
+"{{ socialLink('facebook') }}"
+
+// insert one link, specifying the url
+"{{ socialLink('linkedin',{'url': 'http://www.nomaya.net'}) }}"
+
+// insert custom bar with 2 links, not showing googleplus
+"{{ socialLinks({'linkedin',{'url': 'http://www.nomaya.net'}, 'facebook':{'url': 'http://www.facebook.com'}, 'googleplus': false}) }}"
 ```
 ## Notes
 

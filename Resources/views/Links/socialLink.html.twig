@@ -1,0 +1,6 @@
+{% set img_src = 'bundles/nomayasocial/images/' ~ theme ~ '/' ~ network ~ '.png' %}
+{% spaceless %}
+ <div class="{{ network }}-link col-xs-5">
+ 	<a href="{{ url }}" target="_blank" title="{{ url }}"> <img src="{{ asset( img_src ) }}" alt ="{{ url }}" /></a>
+ </div>
+{% endspaceless %}

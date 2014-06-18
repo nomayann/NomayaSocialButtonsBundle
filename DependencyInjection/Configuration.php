@@ -1,6 +1,6 @@
 <?php
 
-namespace Nomaya\Bundle\SocialBundle\DependencyInjection;
+namespace Nomaya\SocialBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -21,13 +21,21 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('nomaya_social');
         
         $rootNode
+            ->isRequired()        
             ->children()
                 ->arrayNode('buttons')
+                    ->isRequired()
                     ->useAttributeAsKey('networks')
                     ->prototype('array')
                         ->children()
                             ->scalarNode('url')
                                 ->defaultNull()
+                                ->validate()
+                                ->ifTrue(function ($s) {
+                                        return is_null($s) ? false : 1 !== preg_match('/^((http:\/\/|https:\/\/)?(www.)?(([a-zA-Z0-9-]){2,}\.){1,4}([a-zA-Z]){2,6}(\/([a-zA-Z-_\/\.0-9#:?=&;,]*)?)?)/', $s);
+                                    })
+                                ->thenInvalid('Invalid url format')
+                                ->end()                            
                             ->end()
                             ->scalarNode('locale')
                                 ->defaultValue('%locale%')
@@ -51,9 +59,23 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('size')->end()
                             // Linkedin specific
                             ->scalarNode('counter')->end()
-
                         ->end()
                     ->end()
+                ->end()
+                ->arrayNode('links')
+                    ->useAttributeAsKey('network')
+                        ->prototype('scalar')
+                        ->isRequired()
+                        ->validate()
+                        ->ifTrue(function ($s) {
+                            return preg_match('/^((http:\/\/|https:\/\/)?(www.)?(([a-zA-Z0-9-]){2,}\.){1,4}([a-zA-Z]){2,6}(\/([a-zA-Z-_\/\.0-9#:?=&;,]*)?)?)/', $s) !== 1;
+                        })
+                            ->thenInvalid('Invalid url format')
+                        ->end()                                    
+                    ->end()
+                ->end()
+                ->scalarNode('theme')
+                    ->defaultValue('default')
                 ->end()
             ->end()
         ;
