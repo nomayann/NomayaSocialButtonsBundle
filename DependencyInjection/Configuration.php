@@ -47,6 +47,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->booleanNode('send')
                                 ->defaultTrue()
+                            ->end()
                             ->booleanNode('share')
                                 ->defaultTrue()
                             ->end()
