@@ -47,6 +47,8 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->booleanNode('send')
                                 ->defaultTrue()
+                            ->booleanNode('share')
+                                ->defaultTrue()
                             ->end()
                             // Twitter specific
                             ->scalarNode('layout')->end()
