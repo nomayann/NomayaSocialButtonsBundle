@@ -7,7 +7,7 @@ parameters:
                 send: 		false
                 width:		300
                 showFaces: 	false
-                share: 	    true
+                share:      true
                 layout: 	button_count
             twitter:
                 url:		null
