@@ -44,7 +44,7 @@ class ConfigurationTest extends AbstractConfigurationTestCase
                             'send'          => false,
                             'width'         => 300,
                             'showFaces'     => false,
-                            'layout'        => 'buttonCount'
+                            'layout'        => 'buttonCount',
                             )
                         ),
                     'links'         => array(
@@ -59,7 +59,8 @@ class ConfigurationTest extends AbstractConfigurationTestCase
                         'send'      => false,
                         'width'     => 300,
                         'showFaces' => false,
-                        'layout'    => 'buttonCount'
+                        'layout'    => 'buttonCount',
+                        'share'     => true
                     )
                 ),
                 'links'         => array(
@@ -181,7 +182,8 @@ class ConfigurationTest extends AbstractConfigurationTestCase
                         'send'      => false,
                         'width'     => 300,
                         'showFaces' => false,
-                        'layout'    => 'buttonCount'
+                        'layout'    => 'buttonCount',
+                        'share'     => true
                     )
                 ),
                 'links'         => array(
