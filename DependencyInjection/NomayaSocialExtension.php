@@ -59,6 +59,9 @@ class NomayaSocialExtension extends Extension
                                                         'theme'     => $config['theme']));
         }
         $container->setParameter('social.theme', $config['theme']);
+
+        //set configured networks to the social bar
+        $container->getDefinition('twig.extension.nomaya_social_bar')->addMethodCall('setNetworks', array(array_keys($config['buttons'])));
     }
 
     public function getAlias()
