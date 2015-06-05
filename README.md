@@ -77,7 +77,7 @@ nomaya_social:
         twitter:
             url:            null
             locale:         "fr"
-            message:        "Je veux partager ça avec vous"
+            message:        "Je veux partager Ã§a avec vous"
             text:           "Tweet"
             via:            "L'Equipe cartedevisitevirtuelle.fr"
             tag:            "ttot"
@@ -124,7 +124,7 @@ The bundle provides a Twig extension for quickly generating the buttons.
 "{{ socialButtons( {'googleplus':false, 'facebook':false, 'linkedin':false} ) }}"
 
 // insert the google+ button with custom parameters
-"{{ googlePlusButton( {'locale':'fr', 'url':'http://google.fr' }) }}"
+"{{ googleplusButton( {'locale':'fr', 'url':'http://google.fr' }) }}"
 
 // insert the bar with specific values for Facebook
 "{{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}"
