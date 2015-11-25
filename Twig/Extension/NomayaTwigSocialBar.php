@@ -27,6 +27,8 @@ class NomayaTwigSocialBar extends \Twig_Extension{
 
     protected $container;
 
+    protected $networks;
+
     /**
      * Constructor.
      *
@@ -35,6 +37,7 @@ class NomayaTwigSocialBar extends \Twig_Extension{
     public function __construct($container)
     {
         $this->container = $container;
+        $this->networks = array('facebook', 'twitter', 'googleplus', 'linkedin', 'tumblr', 'pinterest', 'youtube', 'instagram');
     }
     
     public function getName()
@@ -56,8 +59,8 @@ class NomayaTwigSocialBar extends \Twig_Extension{
 
     public function getSocialButtons($parameters = array())
     {
-      $networks = array('facebook', 'twitter', 'googleplus', 'linkedin', 'tumblr', 'pinterest', 'youtube', 'instagram');
-      foreach ($networks as $network)
+
+      foreach ($this->networks as $network)
       {
           // no parameters were defined, keeps default values
           if (!array_key_exists($network, $parameters)){
@@ -109,4 +112,15 @@ class NomayaTwigSocialBar extends \Twig_Extension{
        return $this->container->get('nomaya.socialBarHelper')->$Button($parameters);
     }
 
+    /**
+     * @param array $networks
+     *
+     * @return $this
+     */
+    public function setNetworks($networks)
+    {
+        $this->networks = $networks;
+
+        return $this;
+    }
 }
