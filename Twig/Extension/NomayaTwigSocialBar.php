@@ -47,14 +47,27 @@ class NomayaTwigSocialBar extends \Twig_Extension{
     
     public function getFunctions()
     {
-      return array(
-        'socialButtons'     => new \Twig_Function_Method($this, 'getSocialButtons' ,array('is_safe' => array('html'))),
-        'facebookButton'    => new \Twig_Function_Method($this, 'getFacebookLikeButton' ,array('is_safe' => array('html'))),
-        'twitterButton'     => new \Twig_Function_Method($this, 'getTwitterButton' ,array('is_safe' => array('html'))),
-        'googleplusButton'  => new \Twig_Function_Method($this, 'getGoogleplusButton' ,array('is_safe' => array('html'))),
-        'linkedinButton'    => new \Twig_Function_Method($this, 'getLinkedinButton' ,array('is_safe' => array('html'))),
-        'pinterestButton'   => new \Twig_Function_Method($this, 'getPinterestButton' ,array('is_safe' => array('html'))),
-      );
+        if ( class_exists( '\Twig_SimpleFunction' ) ) { // newer non-deprecated class call if available
+            $buttons = [
+                new \Twig_SimpleFunction( 'socialButtons', [ $this, 'getSocialButtons' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'facebookButton', [ $this, 'getFacebookLikeButton' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'twitterButton', [ $this, 'getTwitterButton' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'googleplusButton', [ $this, 'getGoogleplusButton' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'linkedinButton', [ $this, 'getLinkedinButton' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'pinterestButton', [ $this, 'getPinterestButton' ], [ 'is_safe' => [ 'html' ] ] ),
+            ];
+        } else {
+            $buttons = [
+                'socialButtons'    => new \Twig_Function_Method( $this, 'getSocialButtons', [ 'is_safe' => [ 'html' ] ] ),
+                'facebookButton'   => new \Twig_Function_Method( $this, 'getFacebookLikeButton', [ 'is_safe' => [ 'html' ] ] ),
+                'twitterButton'    => new \Twig_Function_Method( $this, 'getTwitterButton', [ 'is_safe' => [ 'html' ] ] ),
+                'googleplusButton' => new \Twig_Function_Method( $this, 'getGoogleplusButton', [ 'is_safe' => [ 'html' ] ] ),
+                'linkedinButton'   => new \Twig_Function_Method( $this, 'getLinkedinButton', [ 'is_safe' => [ 'html' ] ] ),
+                'pinterestButton'  => new \Twig_Function_Method( $this, 'getPinterestButton', [ 'is_safe' => [ 'html' ] ] ),
+            ];
+        }
+
+        return $buttons;
     }
 
     public function getSocialButtons($parameters = array())
