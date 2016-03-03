@@ -44,10 +44,19 @@ class NomayaTwigSocialLinks extends \Twig_Extension{
     
     public function getFunctions()
     {
-      return array(
-        'socialLinks'     => new \Twig_Function_Method($this, 'getSocialLinks' ,array('is_safe' => array('html'))),
-        'socialLink'     => new \Twig_Function_Method($this, 'getSocialLink' ,array('is_safe' => array('html')))
-      );
+        if ( class_exists( '\Twig_SimpleFunction' ) ) { // newer non-deprecated class call if available
+            $links = [
+                new \Twig_SimpleFunction( 'socialLinks', [ $this, 'getSocialLinks' ], [ 'is_safe' => [ 'html' ] ] ),
+                new \Twig_SimpleFunction( 'socialLink', [ $this, 'getSocialLink' ], [ 'is_safe' => [ 'html' ] ] ),
+            ];
+        } else {
+            $links = [
+                'socialLinks' => new \Twig_Function_Method( $this, 'getSocialLinks', [ 'is_safe' => [ 'html' ] ] ),
+                'socialLink'  => new \Twig_Function_Method( $this, 'getSocialLink', [ 'is_safe' => [ 'html' ] ] ),
+            ];
+        }
+
+        return $links;
     }
 
     public function getSocialLinks($parameters = array())
