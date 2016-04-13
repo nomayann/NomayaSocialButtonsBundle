@@ -1,7 +1,7 @@
 {
     "name" : "nomaya/social-bundle",
     "type" : "symfony-bundle",
-    "description" : "A bundle to easily add facebook, twitter, G+, Linkedin buttons to your templates",
+    "description" : "A bundle to easily add share button to social media networks like facebook, twitter, G+, Linkedin buttons to your templates",
     "authors" : [{
         "name" :    "Yann Chauvel",
         "email" :   "yann@nomaya.net",
