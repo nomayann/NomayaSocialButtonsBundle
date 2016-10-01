@@ -21,23 +21,11 @@ Yann
 
 ## Installation
 
-### Add this line to require section of your composer.json
+### Run this command
 
-``` js
-{
-    //...
-    "require": {
-        //...
-        "nomaya/social-bundle": "dev-master"
-    }
-}
-```
 
-### Install the bundle
-
-``` bash
-$ curl -s http://getcomposer.org/installer | php
-$ php composer.phar update nomaya/social-bundle
+``` sh
+composer require nomaya/social-bundle:dev-master
 ```
 
 Composer will install the bundle to your project's `vendor/nomaya` directory.
@@ -77,7 +65,7 @@ nomaya_social:
         twitter:
             url:            null
             locale:         "fr"
-            message:        "Je veux partager ça avec vous"
+            message:        "Je veux partager Ã§a avec vous"
             text:           "Tweet"
             via:            "L'Equipe cartedevisitevirtuelle.fr"
             tag:            "ttot"
