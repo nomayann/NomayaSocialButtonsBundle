@@ -26,6 +26,11 @@ namespace Nomaya\SocialBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class NomayaSocialBundle
+ *
+ * @package Nomaya\SocialBundle
+ */
 class NomayaSocialBundle extends Bundle
 {
 	
