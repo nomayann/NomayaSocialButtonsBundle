@@ -21,23 +21,9 @@ Yann
 
 ## Installation
 
-### Add this line to require section of your composer.json
-
-``` js
-{
-    //...
-    "require": {
-        //...
-        "nomaya/social-bundle": "dev-master"
-    }
-}
-```
-
-### Install the bundle
-
+### Run this command
 ``` bash
-$ curl -s http://getcomposer.org/installer | php
-$ php composer.phar update nomaya/social-bundle
+composer require nomaya/social-bundle:dev-master
 ```
 
 Composer will install the bundle to your project's `vendor/nomaya` directory.
@@ -77,7 +63,7 @@ nomaya_social:
         twitter:
             url:            null
             locale:         "fr"
-            message:        "Je veux partager ça avec vous"
+            message:        "Je veux partager ï¿½a avec vous"
             text:           "Tweet"
             via:            "L'Equipe cartedevisitevirtuelle.fr"
             tag:            "ttot"
@@ -124,7 +110,7 @@ The bundle provides a Twig extension for quickly generating the buttons.
 "{{ socialButtons( {'googleplus':false, 'facebook':false, 'linkedin':false} ) }}"
 
 // insert the google+ button with custom parameters
-"{{ googlePlusButton( {'locale':'fr', 'url':'http://google.fr' }) }}"
+"{{ googleplusButton( {'locale':'fr', 'url':'http://google.fr' }) }}"
 
 // insert the bar with specific values for Facebook
 "{{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}"
@@ -132,7 +118,7 @@ The bundle provides a Twig extension for quickly generating the buttons.
 // links
 
 // insert the whole links defined in config
-"{{ sociallinks() }}"
+"{{ socialLinks() }}"
 
 // insert one link, no option
 "{{ socialLink('facebook') }}"

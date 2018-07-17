@@ -17,6 +17,7 @@ services:
     tags :
         - {name : 'templating.helper', alias : 'social-links'}
     arguments : [ "@templating" ]
+    public: true
 
   twig.extension.nomaya_social_links:
     class: Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks
