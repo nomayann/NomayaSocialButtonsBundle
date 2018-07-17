@@ -67,12 +67,14 @@ class NomayaTwigSocialBar extends AbstractExtension
     public function getFunctions()
     {
         return array(
-            'socialButtons'    => new TwigFunction($this, 'getSocialButtons', array('is_safe' => array('html'))),
-            'facebookButton'   => new TwigFunction($this, 'getFacebookLikeButton', array('is_safe' => array('html'))),
-            'twitterButton'    => new TwigFunction($this, 'getTwitterButton', array('is_safe' => array('html'))),
-            'googleplusButton' => new TwigFunction($this, 'getGoogleplusButton', array('is_safe' => array('html'))),
-            'linkedinButton'   => new TwigFunction($this, 'getLinkedinButton', array('is_safe' => array('html'))),
-            'pinterestButton'  => new TwigFunction($this, 'getPinterestButton', array('is_safe' => array('html'))),
+            new TwigFunction('socialButtons', array($this, 'getSocialButtons'), array('is_safe' => array('html'))),
+            new TwigFunction('facebookButton', array($this, 'getFacebookLikeButton'),
+                array('is_safe' => array('html'))),
+            new TwigFunction('twitterButton', array($this, 'getTwitterButton'), array('is_safe' => array('html'))),
+            new TwigFunction('googleplusButton', array($this, 'getGoogleplusButton'),
+                array('is_safe' => array('html'))),
+            new TwigFunction('linkedinButton', array($this, 'getLinkedinButton'), array('is_safe' => array('html'))),
+            new TwigFunction('pinterestButton', array($this, 'getPinterestButton'), array('is_safe' => array('html'))),
         );
     }
 
