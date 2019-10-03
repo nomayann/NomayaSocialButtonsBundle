@@ -17,9 +17,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('nomaya_social');
-        
+        $treeBuilder = new TreeBuilder('nomaya_social');
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('nomaya_social');
+        }
+
         $rootNode
             ->isRequired()        
             ->children()
