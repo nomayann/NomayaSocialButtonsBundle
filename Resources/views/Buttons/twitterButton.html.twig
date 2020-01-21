@@ -9,11 +9,11 @@
    data-url="{{url}}"
    data-lang="{{locale}}"
 
-   {% if via is not sameas(false) %}
+   {% if via is not same as(false) %}
      data-via="{{via}}"
    {% endif %}
 
-   {% if tag is not sameas(false) %}
+   {% if tag is not same as(false) %}
      data-hashtags="{{tag}}"
    {% endif %}
  >{{text}}</a>

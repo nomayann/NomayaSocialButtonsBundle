@@ -1,24 +1,26 @@
 services:
-    nomaya.socialBarHelper:
-        class : Nomaya\SocialBundle\Helpers\SocialBarHelper
-        tags :
-            - {name : 'templating.helper', alias : 'social-buttons'}
-        arguments : [ "@templating" ]
+  nomaya.socialBarHelper:
+    class : Nomaya\SocialBundle\Helpers\SocialBarHelper
+    tags :
+        - {name : 'templating.helper', alias : 'social-buttons'}
+    arguments : [ "@templating" ]
+    public: true
 
-    twig.extension.nomaya_social_bar:
-        class: Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar
-        tags:
-            - { name: 'twig.extension' }
-        arguments : [ "@service_container" ]
+  twig.extension.nomaya_social_bar:
+    class: Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar
+    tags:
+        - { name: 'twig.extension' }
+    arguments : [ "@service_container" ]
 
-    nomaya.socialLinksHelper:
-        class : Nomaya\SocialBundle\Helpers\SocialLinksHelper
-        tags :
-            - {name : 'templating.helper', alias : 'social-links'}
-        arguments : [ "@templating" ]
+  nomaya.socialLinksHelper:
+    class : Nomaya\SocialBundle\Helpers\SocialLinksHelper
+    tags :
+        - {name : 'templating.helper', alias : 'social-links'}
+    arguments : [ "@templating" ]
+    public: true
 
-    twig.extension.nomaya_social_links:
-        class: Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks
-        tags:
-            - { name: 'twig.extension' }
-        arguments : [ "@service_container" ]
+  twig.extension.nomaya_social_links:
+    class: Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks
+    tags:
+        - { name: 'twig.extension' }
+    arguments : [ "@service_container" ]
